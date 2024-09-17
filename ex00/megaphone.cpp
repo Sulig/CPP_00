@@ -29,7 +29,7 @@ int main(int argc, char **args)
             j = -1;
             while (args[i][++j])
                 if (args[i][j] >= 'a' && args[i][j] <= 'z')
-                    args[i][j] = args[i][j] - 'a' + 'A';
+                    args[i][j] = args[i][j] - 32;
             std::cout << args[i];
         }
         std::cout << std::endl;
