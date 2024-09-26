@@ -27,10 +27,9 @@ DIR_OBJ	= ./obj
 # ------------------- #
 # Sources:
 MAK = Makefile
-# HEADERS:
-HDR = $(DIR_INC)/
+HDR = $(DIR_INC)/ # Headers
 
-SRC_SRC = megaphone.cpp
+SRC_SRC = AwesomePhoneBookMain.cpp Contact.cpp PhoneBook.cpp
 
 SRC = $(addprefix $(DIR_SRC)/, $(SRC_SRC))
 OBJS = $(patsubst $(DIR_SRC)%.cpp, $(DIR_OBJ)/%.o, $(SRC))
@@ -53,6 +52,7 @@ run: $(NAME)
 #-------------------------------------------------------------#
 # **************************************************************************** #
 # COMPILATION ->
+
 $(OBJ_DIR)/%.o: $(SRC_DIR)%.c $(HDR) $(MAK)
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@ $(INCLUDE)
