@@ -6,15 +6,14 @@
 /*   By: sadoming <sadoming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:40:45 by sadoming          #+#    #+#             */
-/*   Updated: 2024/09/17 17:40:45 by sadoming         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:52:42 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-# include <iostream>
-# include <sting>
+
 
 
 

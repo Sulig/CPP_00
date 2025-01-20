@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/10 17:01:41 by sadoming          #+#    #+#              #
-#    Updated: 2024/09/10 17:01:41 by sadoming         ###   ########.fr        #
+#    Updated: 2025/01/20 20:01:42 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,8 @@ NAME = megaphone
 # ------------------ #
 # Flags:
 
-CC		 = g++
-CFLAGS	 = -Wall -Wextra -Werror -g
-CPPFLAGS = -std=c++98
+CC		 = c++
+CFLAGS	 = -Wall -Wextra -Werror -std=c++98 #-g
 # ------------------- #
 # Sources:
 MAK = Makefile
@@ -46,10 +45,10 @@ $(NAME): $(MAK) $(OBJ)
 # **************************************************************************** #
 # Clean region
 clean:
-	@rm $(OBJ)
+	@rm -rf $(OBJ)
 
 fclean:	clean
-	@rm $(NAME)
+	@rm -rf $(NAME)
 	@echo "\033[1;34m All cleaned succesfully\033[1;97m\n"
 
 clear: fclean

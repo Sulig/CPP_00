@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/10 17:01:41 by sadoming          #+#    #+#              #
-#    Updated: 2024/09/10 17:01:41 by sadoming         ###   ########.fr        #
+#    Updated: 2025/01/20 17:49:11 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,53 +14,77 @@ NAME = AwesomePhoneBook
 # ------------------ #
 # Flags:
 
-CC		 = g++
-CFLAGS	 = -Wall -Wextra -Werror -g
-CPPFLAGS = -std=c++98
-INCLUDE = -I $(DIR_INC)/
+CC		 = c++
+CFLAGS	 = -Wall -Wextra -Werror -std=c++98 -g -c #-fsanitize=address
 # ------------------- #
+# Colors
+
+R	:=	\033[0;31m
+G	:=	\033[0;32m
+Y	:=	\033[0;33m
+B	:=	\033[0;34m
+P	:=	\033[0;35m
+C	:=	\033[0;36m
+W	:=	\033[0;37m
+DEF	:=	\033[0m
+
+RG	:=	\033[1;32m
+# ------------------ #
 # Directories:
 
-DIR_INC	= ./inc
-DIR_SRC	= ./src
-DIR_OBJ	= ./obj
+# SRC DIR
+SRC_DIR		:=	./src/
+INC_DIR		:=	$(SRC_DIR)inc
+OBJ_DIR		:=	./obj
 # ------------------- #
 # Sources:
 MAK = Makefile
-HDR = $(DIR_INC)/ # Headers
+HDR = $(INC_DIR)/ # Headers
 
-SRC_SRC = AwesomePhoneBookMain.cpp Contact.cpp PhoneBook.cpp
+SRC_SUF	:= cpp
+SRC_SRC := AwesomePhoneBookMain.cpp #PhoneBook.cpp Contact.cpp
 
-SRC = $(addprefix $(DIR_SRC)/, $(SRC_SRC))
-OBJS = $(patsubst $(DIR_SRC)%.cpp, $(DIR_OBJ)/%.o, $(SRC))
+SRC := $(addprefix $(SRC_DIR), $(SRC_SRC))
+
+OBJS = $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)/%.o, $(SRC))
+DEPS = $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)/%.d, $(SRC))
+-include $(DEPS)
+
+# More deps...
+vpath %.hpp $(INC_DIR)
+vpath %.cpp $(SRC_DIR)
+vpath %.o $(OBJ_DIR)
 # **************************************************************************** #
 #-------------------------------------------------------------#
 all: $(NAME)
+	@echo "$(RG)\n~ **************************************** ~\n"
+	@echo "  ~\t$(NAME) is ready!\t ~\n"
+	@echo "~ **************************************** ~$(DEF)\n"
+	@make -s author
 #-------------------------------------------------------------#
 author:
-	@echo "\033[1;34m\n~ **************************************** ~\n"
-	@echo "   ~ \t      Made by Sadoming \t        ~\n"
-	@echo "~ **************************************** ~\n\n"
+	@echo "$(P)~ **************************************** ~"
+	@echo " ~\t      Made by Sadoming \t         ~"
+	@echo "~ **************************************** ~$(DEF)\n"
 #-------------------------------------------------------------#
 #-------------------------------------------------------------#
 run: $(NAME)
-	@echo "\033[1;34m\n~ **************************************** ~\n"
-	@echo " ~ Running ./$(NAME)"
-	@echo "\n~ **************************************** ~\033[0;37m\n"
+	@echo "$(C)\n~ **************************************** ~\n"
+	@echo " ~ Running ./$(NAME) "
+	@echo "\n~ **************************************** ~ $(DEF)\n"
 	@./$(NAME)
 #-------------------------------------------------------------#
 #-------------------------------------------------------------#
 # **************************************************************************** #
 # COMPILATION ->
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)%.c $(HDR) $(MAK)
-	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@ $(INCLUDE)
+$(OBJ_DIR)/%.o: $(SRC_DIR)%.cpp $(MAK) $(HDR)
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I $(INC_DIR) $< -o $@
 
-$(NAME): $(MAK) $(HDR) $(OBJS)
-	@echo "\033[1;93m\n * Making $(NAME) -->\033[0;37m\n"
-	$(CC) $(OBJ) $(CFLAGS) -o $@
-	@echo "\033[1;32m\n $(NAME) Compiled Successfully\033[0;37m\n"
+$(NAME): $(OBJS) $(MAK) $(HDR)
+	@$(CC) $(OBJS) -o $(NAME)
+	@echo "$(G)\n~ $(NAME) Compiled Successfully ~"
 
 # **************************************************************************** #
 # **************************************************************************** #
@@ -82,14 +106,14 @@ val-strict: $(NAME)
 # **************************************************************************** #
 # Clean region
 clean:
-	@make -s clean -C $(LIB_DIR)
 	@/bin/rm -frd $(OBJ_DIR)
+	@echo "$(B)\n All objs & deps removed$(DEF)\n"
 
 fclean:	clean
 	@/bin/rm -f $(NAME)
 	@/bin/rm -frd $(NAME).dSYM
 	@find . -name ".DS_Store" -type f -delete
-	@echo "\033[1;34m All cleaned succesfully\033[1;97m\n"
+	@echo "$(B)\n All cleaned succesfully$(DEF)\n"
 
 clear: fclean
 	@clear
