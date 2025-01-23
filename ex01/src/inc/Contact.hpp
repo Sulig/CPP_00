@@ -25,10 +25,10 @@ class Contact
 		Contact(std::string firstName, std::string lastName, std::string nickname, int phone,
 		std::string secret);
 		~Contact(void);
-		int		Contact::isNull(Contact contact);
-		void	Contact::displayLargeStrings(std::string toPrint);
-		void	Contact::displayInSearch(Contact contact, int index);
-		void	Contact::displayAll(Contact contact);
+		int	isNull(Contact contact);
+		void	displayLargeStrings(std::string toPrint);
+		void	displayInSearch(Contact contact, int index);
+		void	displayAll(Contact contact);
 	private:
 		std::string	firstName;
 		std::string	lastName;
