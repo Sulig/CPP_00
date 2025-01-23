@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:36:35 by sadoming          #+#    #+#             */
-/*   Updated: 2025/01/22 18:22:37 by sadoming         ###   ########.fr       */
+/*   Updated: 2025/01/23 19:13:28 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ void	Contact::displayLargeStrings(std::string toPrint)
 	else
 	{
 		// How many spaces has to print?
-		int		spaces = 10 - toPrint.length();
 		// Print spaces
-		for (spaces > 0; spaces--;)
+		for (int spaces = 10 - toPrint.length(); spaces > 0; spaces--)
 			std::cout << ' ';
 		// Print it.
 		std::cout << toPrint;
@@ -53,7 +52,7 @@ void	Contact::displayLargeStrings(std::string toPrint)
 
 void	Contact::displayInSearch(Contact contact, int index)
 {
-	std::cout << "|         " << index;
+	std::cout << "         " << index;
 	displayLargeStrings(contact.firstName);
 	std::cout << "|";
 	displayLargeStrings(contact.lastName);
