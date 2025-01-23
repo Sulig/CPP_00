@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/10 17:01:41 by sadoming          #+#    #+#              #
-#    Updated: 2025/01/20 17:49:11 by sadoming         ###   ########.fr        #
+#    Updated: 2025/01/23 18:42:15 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ MAK = Makefile
 HDR = $(INC_DIR)/ # Headers
 
 SRC_SUF	:= cpp
-SRC_SRC := AwesomePhoneBookMain.cpp #PhoneBook.cpp Contact.cpp
+SRC_SRC := AwesomePhoneBookMain.cpp PhoneBook.cpp Contact.cpp
 
 SRC := $(addprefix $(SRC_DIR), $(SRC_SRC))
 
