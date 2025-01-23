@@ -20,13 +20,14 @@ class PhoneBook
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
-		std::string	PhoneBook::trim(std::string str);
-		std::string	PhoneBook::manageInput(void);
-		void	PhoneBook::showContacts(PhoneBook phoneBook);
-		void	PhoneBook::addContact(PhoneBook phoneBook);
+		int		atoi(std::string str);
+		int		lastContact(PhoneBook phoneBook);
+		std::string	trim(std::string str);
+		std::string	manageInput(void);
+		void		showContacts(PhoneBook phoneBook);
+		PhoneBook	addContact(PhoneBook phoneBook);
 	private:
 		Contact	contacts[8];
-		int		lastContact;
 };
 
 #endif
