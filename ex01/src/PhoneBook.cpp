@@ -67,7 +67,7 @@ void	PhoneBook::showContacts(PhoneBook phoneBook)
 	}
 }
 
-void	PhoneBook::addContact(PhoneBook phoneBook)
+PhoneBook	PhoneBook::addContact(PhoneBook phoneBook)
 {
 	std::string	firstName;
 	std::string	lastName;
@@ -115,4 +115,5 @@ void	PhoneBook::addContact(PhoneBook phoneBook)
 		phoneBook.contacts[0] = contact;
 	}
 	std::cout << "[ Contact added! ]" << std::endl;
+	return (phoneBook);
 }
