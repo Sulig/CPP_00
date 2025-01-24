@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:40:23 by sadoming          #+#    #+#             */
-/*   Updated: 2025/01/23 18:01:19 by sadoming         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:51:33 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ class PhoneBook
 		std::string	trim(std::string str);
 		std::string	manageInput(void);
 		void		showContacts(PhoneBook phoneBook);
+		PhoneBook	startContactIndex(PhoneBook phoneBook);
 		PhoneBook	addContact(PhoneBook phoneBook);
 	private:
 		Contact	contacts[8];
+		int		lastContactIndex;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:36:35 by sadoming          #+#    #+#             */
-/*   Updated: 2025/01/23 19:13:28 by sadoming         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:37:00 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ int	Contact::isNull(Contact contact)
 
 void	Contact::displayLargeStrings(std::string toPrint)
 {
-	if (toPrint.length() > 10)
+	if (toPrint.length() >= 10)
 	{
-		//Declare special type of string that will recive the toPrint cuted with max width of 10
-		std::stringstream	tmp;
-		tmp << std::setw(10) << toPrint;
-		// Convert the stream to string, so it will can be printed
-		std::cout << tmp.str();
+		for (int i = 0; i < 9; i++)
+			std::cout << toPrint[i];
+		std::cout << ".";
 	}
 	else
 	{
@@ -52,7 +50,7 @@ void	Contact::displayLargeStrings(std::string toPrint)
 
 void	Contact::displayInSearch(Contact contact, int index)
 {
-	std::cout << "         " << index;
+	std::cout << "         " << index << "|";
 	displayLargeStrings(contact.firstName);
 	std::cout << "|";
 	displayLargeStrings(contact.lastName);
@@ -64,10 +62,10 @@ void	Contact::displayInSearch(Contact contact, int index)
 void	Contact::displayAll(Contact contact)
 {
 	std::cout << "[ Contact information ]" << std::endl;
-	std::cout << "|| First name:\t" << contact.firstName << std::endl;
-	std::cout << "|| Last name: \t" << contact.lastName << std::endl;
-	std::cout << "|| Nickname:  \t" << contact.nickname << std::endl;
-	std::cout << "|| Phone:\t\t\t" << contact.phone << std::endl;
+	std::cout << "|| First name:\t\t" << contact.firstName << std::endl;
+	std::cout << "|| Last name: \t\t" << contact.lastName << std::endl;
+	std::cout << "|| Nickname:  \t\t" << contact.nickname << std::endl;
+	std::cout << "|| Phone:\t\t" << contact.phone << std::endl;
 	std::cout << "|| Darkest Secret:\t" << contact.secret << std::endl;
 	std::cout << "~ ------------------" << std::endl << std::endl;
 }

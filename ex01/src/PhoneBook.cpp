@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:36:56 by sadoming          #+#    #+#             */
-/*   Updated: 2025/01/23 19:59:51 by sadoming         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:00:16 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 PhoneBook::PhoneBook(void) { return ;}
 PhoneBook::~PhoneBook(void) { return ; }
+
+PhoneBook PhoneBook::startContactIndex(PhoneBook phoneBook)
+{
+	phoneBook.lastContactIndex = 0;
+	return (phoneBook);
+}
 
 /* Remove innecesary block of chars */
 std::string	PhoneBook::trim(std::string str)
@@ -69,10 +75,18 @@ std::string	PhoneBook::manageInput(void)
 	do {
 		std::getline(std::cin, userInput);
 		userInput = trim(userInput);
-		if (!userInput.length() || std::cin.eof())
-			std::cout << "Please introduce something!" << std::endl;
+		if (std::cin.eof())
+		{
+			std::cout << "EOF DETECTED. EXITING.." << std::endl;
+			exit(0);
+		}
 		else
-			break;
+		{
+			if (!userInput.length())
+				std::cout << "Please introduce something!" << std::endl;
+			else
+				break;
+		}
 	} while (42);
 	return (userInput);
 }
@@ -87,7 +101,7 @@ void	PhoneBook::showContacts(PhoneBook phoneBook)
 		int index;
 		std::string input;
 
-		std::cout << "     Index|First Name| Last Name|  Nickname" << std::endl;
+		std::cout << "     Index|First Name| Last Name|  Nickname ~//" << std::endl;
 		for (int i = 0; i < phoneBook.lastContact(phoneBook); i++) {
 			if (i >=8 || phoneBook.contacts[i].isNull(phoneBook.contacts[i]))
 				break ;
@@ -138,17 +152,16 @@ PhoneBook	PhoneBook::addContact(PhoneBook phoneBook)
 	contact = Contact(firstName, lastName, nickname, phone, secret);
 
 	// Add contact to the phonebook
-	if (phoneBook.lastContact(phoneBook) < 8)
-		phoneBook.contacts[phoneBook.lastContact(phoneBook)] = contact;
+	if (phoneBook.lastContactIndex < 8)
+		phoneBook.contacts[phoneBook.lastContactIndex++] = contact;
 	/* If the phonebook is full, remove the last contact
 		and add the new one to first position ~
 	*/
 	else
 	{
-		for (int i = 0; i < 7; i++)
-			phoneBook.contacts[i] = phoneBook.contacts[i + 1];
 		phoneBook.contacts[0] = contact;
+		phoneBook.lastContactIndex = 1;
 	}
-	std::cout << "[ Contact added! ]" << std::endl;
+	std::cout << "[ Contact added! ]" << std::endl << std::endl;
 	return (phoneBook);
 }

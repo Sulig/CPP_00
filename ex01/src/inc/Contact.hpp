@@ -6,17 +6,17 @@
 /*   By: sadoming <sadoming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:40:45 by sadoming          #+#    #+#             */
-/*   Updated: 2025/01/23 16:38:27 by sadoming         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:32:14 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include <cstdlib>
-#include <iomanip>
-#include <iostream>
-#include <string>
+# include <cstdlib>
+# include <iomanip>
+# include <iostream>
+# include <string>
 
 class Contact
 {
