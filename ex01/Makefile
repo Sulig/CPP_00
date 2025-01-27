@@ -14,8 +14,8 @@ NAME = AwesomePhoneBook
 # ------------------ #
 # Flags:
 
-CC		 = c++
-CFLAGS	 = -Wall -Wextra -Werror -std=c++98 -g -c #-fsanitize=address
+CC		 := c++
+CFLAGS	 := -Wall -Wextra -Werror -std=c++98 -g -c #-fsanitize=address
 # ------------------- #
 # Colors
 
@@ -41,7 +41,6 @@ OBJ_DIR		:=	./obj
 MAK = Makefile
 HDR = $(INC_DIR)/ # Headers
 
-SRC_SUF	:= cpp
 SRC_SRC := AwesomePhoneBookMain.cpp PhoneBook.cpp Contact.cpp
 
 SRC := $(addprefix $(SRC_DIR), $(SRC_SRC))
